@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Map Gondokusuman</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* Panel Story */
+        #story {
+            width: 40%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 25px;
+            background: #faf7f2;
+            border-right: 2px solid #ddd;
+        }
+
+        .story-block {
+            margin-bottom: 80px;
+        }
+
+        .story-block h2 {
+            margin-top: 0;
+        }
+
+        .story-block img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Panel Map */
+        #mapFrame {
+            width: 60%;
+            height: 100%;
+            border: none;
+        }
+        #story-title {
+            background: rgba(0,0,0,0.55);
+            color: white;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .story-block img {
+            width: 100%;
+            max-width: 85%;  /* ✔️ perkecil dari full ke 85% */
+            display: block;
+            margin: 10px auto 20px auto; /* ✔️ biar center dan ada jarak */
+            border-radius: 12px;
+        }
+        .story-block {
+            background: #ffffffcc; /* putih semi transparan */
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .story-block p {
+            text-align: justify;
+            margin: 10px 0 0 0;
+            padding: 0 15px;    /* 👉 kasih padding ke kiri–kanan */
+            line-height: 1.5;
+            word-wrap: break-word; /* 👉 biar teks panjang nggak nembus keluar */
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="container">
+
+    <!-- ================= STORY PANEL ================= -->
+    <div id="story">
+        <div id="story-title">
+            Story Map Sejarah Nama Jalan di Kemantren Gondokususman
+        </div>
+
+        <section class="story-block" data-jalan="Jl. Dr. Sarjito" onmouseover="zoomTo('Jl. Dr. Sarjito')">
+            <h2>Jalan Dr. Sardjito</h2>
+            <img src="../assets/img/sardjito.png">
+            <p>Nama Jalan Dr. Sardjito berasal dari nama Prof. Dr. Sardjito (1907–1970), seorang dokter, ilmuwan, dan tokoh pendidikan nasional. 
+                Ia dikenal sebagai Rektor pertama Universitas Gadjah Mada setelah universitas tersebut resmi berdiri pada tahun 1949. Prof. 
+                Sardjito memiliki peran besar dalam membangun sistem pendidikan tinggi nasional, khususnya di Yogyakarta yang saat itu menjadi pusat 
+                pemerintahan Republik Indonesia. Selain sebagai akademisi, ia juga aktif dalam bidang kesehatan masyarakat dan penelitian medis. 
+                Penamaan jalan ini merupakan bentuk penghormatan atas jasa-jasanya dalam dunia pendidikan, kesehatan, dan pengabdian kepada negara.</p>
+        </section>
+
+        <section class="story-block" data-jalan="Jl. C. Simanjutak" onmouseover="zoomTo('Jl. C. Simanjutak')">
+            <h2>Jalan Cornelis Simanjutak</h2>
+            <img src="../assets/img/simanjutak.png">
+            <p>Nama Jalan ini dinamai berdasarkan Cornelis Simanjutak (1921–1946), seorang komponis dan pejuang kemerdekaan Indonesia. 
+                Ia dikenal sebagai pencipta berbagai lagu perjuangan yang membangkitkan semangat nasionalisme rakyat Indonesia pada masa revolusi kemerdekaan, 
+                seperti lagu-lagu yang sering dinyanyikan oleh para pejuang dan pemuda. Cornelis juga terlibat langsung dalam perjuangan fisik melawan penjajah 
+                Belanda hingga akhirnya gugur di usia muda. Nama jalan ini diabadikan untuk mengenang kontribusinya di bidang seni dan perjuangan nasional.</p>
+        </section>
+
+         <section class="story-block" data-jalan="Jl. Cik di Tiro" onmouseover="zoomTo('Jl. Cik di Tiro')">
+            <h2>Jalan Cik di Tiro</h2>
+            <img src="../assets/img/cik.png">
+            <p>Nama Jalan Cik Di Tiro diambil dari Teuku Cik Di Tiro Muhammad Saman, pahlawan nasional asal Aceh. Ia merupakan ulama sekaligus pemimpin 
+                perang yang memimpin perlawanan rakyat Aceh terhadap kolonial Belanda pada akhir abad ke-19. Perjuangannya dikenal luas karena berhasil 
+                menggerakkan rakyat Aceh untuk melawan penjajahan melalui semangat jihad dan persatuan. Penamaan jalan ini melambangkan semangat perlawanan, 
+                keberanian, dan nasionalisme.</p>
+        </section>
+
+        <section class="story-block" data-jalan="Jl. Prof. Kahar Muzakir" onmouseover="zoomTo('Jl. Prof. Kahar Muzakir')">
+            <h2>Jalan Prof. Kahar Muzakir</h2>
+            <img src="../assets/img/kahar.png">
+            <p>Jalan Prof. Kahar Muzakir diambil dari nama Prof. Kahar Muzakir (1907–1973), seorang tokoh nasional di bidang pendidikan, ekonomi, dan politik. 
+                Ia merupakan salah satu pendiri Universitas Gadjah Mada dan tokoh penting dalam proses awal berdirinya Republik Indonesia. Prof. Kahar Muzakir juga 
+                tercatat sebagai anggota Panitia Persiapan Kemerdekaan Indonesia (PPKI) serta pernah menjabat sebagai Menteri Pendidikan dan Kebudayaan. 
+                Penamaan jalan ini merupakan bentuk penghargaan atas jasanya dalam membangun pendidikan dan negara.</p>
+        </section>
+
+        <section class="story-block" data-jalan="Jl.  Prof. Dr. Herman Johanes" onmouseover="zoomTo('Jl.  Prof. Dr. Herman Johanes')">
+            <h2>Jalan Profesor Doktor Herman Johanes </h2>
+            <img src="../assets/img/herman.png">
+            <p>Nama jalan ini mengabadikan Prof. Dr. Herman Johannes (1902–1992), seorang ilmuwan fisika, pejuang kemerdekaan, dan tokoh pemerintahan Republik Indonesia. Ia pernah menjabat sebagai Rektor Universitas Gadjah Mada dan aktif dalam berbagai bidang pemerintahan, termasuk perencanaan pembangunan nasional. Herman Johannes juga terlibat dalam perjuangan mempertahankan kemerdekaan, khususnya melalui peran intelektual dan diplomasi. Penamaan jalan ini mencerminkan penghargaan atas dedikasi ilmiah dan pengabdiannya kepada bangsa.</p>
+        </section>
+
+        <section class="story-block" data-jalan="Jl. Jend. Sudirman" onmouseover="zoomTo('Jl. Jend. Sudirman')">
+            <h2>Jalan Jenderal Sudirman</h2>
+            <img src="../assets/img/jensud.png">
+            <p>Jalan Jenderal Sudirman dinamai dari Jenderal Besar Raden Soedirman (1916–1950), Panglima Besar Tentara Nasional Indonesia pertama. Ia dikenal sebagai simbol keteguhan dan patriotisme bangsa Indonesia karena memimpin perang gerilya melawan Belanda meskipun dalam kondisi sakit parah. Jenderal Sudirman memiliki peran penting dalam mempertahankan kemerdekaan Indonesia, khususnya pada masa Agresi Militer Belanda. Nama beliau diabadikan sebagai teladan kepemimpinan dan pengorbanan.</p>
+        </section>
+
+        <section class="story-block" data-jalan="Jl. Sajiono" onmouseover="zoomTo('Jl. Sajiono"')">
+            <h2> Jalan Sajiono</h2>
+            <img src="../assets/img/sajiono.jpeg">
+            <p>Nama jalan ini berasal dari Sajiono, pejuang lokal yang ikut serta dalam Serbuan Kotabaru melawan tentara Jepang. Sajiono gugur dalam pertempuran tersebut dan namanya diabadikan sebagai bentuk penghormatan atas pengorbanannya demi kemerdekaan Indonesia.</p>
+        </section>
+
+        <section class="story-block" data-jalan="Jl. Atmosukarto" onmouseover="zoomTo('Jl. Atmosukarto')">
+            <h2>Jalan Atmosukarto</h2>
+            <img src="../assets/img/atmo.jpg">
+            <p>Atmosukarto merupakan salah satu pejuang yang gugur dalam peristiwa Serbuan Kotabaru. Ia berjuang bersama para pemuda melawan tentara Jepang demi mempertahankan kemerdekaan Indonesia.</p>
+        </section>
+
+        <section class="story-block" data-jalan="Jl. Trimo" onmouseover="zoomTo('Jl. Trimo')">
+            <h2>Jalan Trimo</h2>
+            <img src="../assets/img/trimo.jpg">
+            <p>Trimo merupakan pejuang muda yang gugur saat Serbuan Kotabaru. Namanya diabadikan sebagai bentuk penghormatan atas jasa dan pengorbanannya dalam perjuangan melawan Jepang.</p>
+        </section>
+
+        <section class="story-block" data-jalan="Jl. Hadidarsono" onmouseover="zoomTo('Jl. Hadidarsono')">
+            <h2>Jalan Hadidarsono</h2>
+            <img src="../assets/img/hadidarsono.jpg">
+            <p>Hadidarsono adalah salah satu pejuang yang gugur dalam Serbuan Kotabaru 7 Oktober 1945. Ia bersama para pemuda lainnya berjuang merebut kekuasaan militer Jepang di Yogyakarta.</p>
+        </section>
+
+        <section class="story-block" data-jalan="Jl. Johar Nurhadi" onmouseover="zoomTo('Jl. Johar Nurhadi')">
+            <h2>Jalan Johar Nurhadi</h2>
+            <img src="../assets/img/johar.jpg">
+            <p>Johar Nurhadi merupakan pejuang muda yang gugur dalam peristiwa Serbuan Kotabaru. Namanya diabadikan sebagai nama jalan untuk mengenang keberanian dan pengorbanannya dalam melawan tentara pendudukan Jepang.</p>
+        </section>
+
+        <section class="story-block" data-jalan="Jl. Suhartono" onmouseover="zoomTo('Jl. Suhartono')">
+            <h2>Jalan Suhartono</h2>
+            <img src="../assets/img/suhartono.jpg">
+            <p>Jalan Suhartono dinamai dari Suhartono, pejuang lokal yang terlibat langsung dalam Serbuan Kotabaru. Ia gugur dalam pertempuran melawan Jepang dan dikenang sebagai bagian dari sejarah perjuangan rakyat Yogyakarta.</p>
+        </section>
+
+        <section class="story-block" data-jalan="Jl. Supadi" onmouseover="zoomTo('Jl. Supadi')">
+            <h2>Jalan Supadi</h2>
+            <img src="../assets/img/supadi.jpeg">
+            <p>Jalan Supadi dinamai untuk mengenang Supadi, salah satu pejuang muda yang gugur dalam peristiwa Serbuan Kotabaru pada 7 Oktober 1945. Ia tergabung dalam laskar pemuda yang menyerbu markas tentara Jepang di Kotabaru Yogyakarta. Perjuangannya menjadi simbol keberanian pemuda dalam merebut kembali kedaulatan Indonesia pascakemerdekaan.</p>
+        </section>
+
+        <!-- Tambahkan blok lain sesuai kebutuhan -->
+    </div>
+
+    <!-- ================= MAP PANEL ================= -->
+    <iframe id="mapFrame" src="../peta/index.html"></iframe>
+
+</div>
+
+<!-- ================= SCRIPT ZOOM CONTROL ================= -->
+<script>
+    // Fungsi untuk mengirim perintah zoom ke iframe map qgis2web
+    function zoomTo(nama) {
+        document.getElementById("mapFrame").contentWindow.postMessage(
+            { zoomTo: nama },
+            "*"
+        );
+    }
+
+    // Observasi scroll untuk auto-zoom
+    const blocks = document.querySelectorAll(".story-block");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                let targetName = entry.target.getAttribute("data-jalan");
+                zoomTo(targetName);
+            }
+        });
+    }, { threshold: 0.55 });
+
+    blocks.forEach(block => observer.observe(block));
+</script>
+
+</body>
+</html>
