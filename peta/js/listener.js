@@ -1,15 +1,28 @@
-let originalStylesSaved = false;  
-let originalStyles = new Map();   
+// ===============================
+// LISTENER HIGHLIGHT JALAN (FINAL)
+// ===============================
+
+console.log("listener.js loaded");
+
+let originalStylesSaved = false;
+let originalStyles = new Map();
 
 window.addEventListener("message", function (event) {
 
+    console.log("MESSAGE MASUK:", event.data);
+
+    // validasi data
     if (!event.data || !event.data.zoomTo) return;
 
-    let fiturDicari = event.data.zoomTo.toLowerCase();
+    let target = String(event.data.zoomTo)
+        .toLowerCase()
+        .replace(/\s+/g, ''); // buang spasi
 
-    // 1. SIMPAN STYLE ASLI (hanya sekali)
+    // =============================
+    // 1. SIMPAN STYLE ASLI (SEKALI)
+    // =============================
     if (!originalStylesSaved) {
-        layer_JalanKemantrenGondokusuman_4.eachLayer(function(layer){
+        layer_JalanKemantrenGondokusuman_4.eachLayer(function (layer) {
             originalStyles.set(layer._leaflet_id, {
                 color: layer.options.color,
                 weight: layer.options.weight,
@@ -17,33 +30,54 @@ window.addEventListener("message", function (event) {
             });
         });
         originalStylesSaved = true;
-        console.log("Original styles saved.");
+        console.log("Original styles saved");
     }
 
-    // 2. RESET STYLE KE ASLI
-    layer_JalanKemantrenGondokusuman_4.eachLayer(function(layer){
+    // =============================
+    // 2. RESET SEMUA JALAN
+    // =============================
+    layer_JalanKemantrenGondokusuman_4.eachLayer(function (layer) {
         let saved = originalStyles.get(layer._leaflet_id);
         if (saved) {
             layer.setStyle(saved);
         }
     });
 
-    // 3. CARI JALAN & HIGHLIGHT
-    layer_JalanKemantrenGondokusuman_4.eachLayer(function(layer){
+    // =============================
+    // 3. CARI & HIGHLIGHT (SATU SAJA)
+    // =============================
+    let sudahKetemu = false;
 
-        if (layer.feature && layer.feature.properties) {
+    layer_JalanKemantrenGondokusuman_4.eachLayer(function (layer) {
 
-            let nama = String(layer.feature.properties['nama'] || "").toLowerCase();
+        if (sudahKetemu) return;
+        if (!layer.feature || !layer.feature.properties) return;
 
-            if (nama.includes(fiturDicari)) {
+        let nama = String(layer.feature.properties.nama || "")
+            .toLowerCase()
+            .replace(/\s+/g, '');
 
-                layer.setStyle({
-                    color: "#ff0000",
-                    weight: 7,
-                    opacity: 1
-                });
+        console.log("CEK:", nama);
 
-                map.fitBounds(layer.getBounds(), { maxZoom: 19 });
+        if (nama.includes(target)) {
+            sudahKetemu = true;
+
+            console.log("MATCH:", nama);
+
+            layer.setStyle({
+                color: "#ff0000",
+                weight: 7,
+                opacity: 1
+            });
+
+            map.fitBounds(layer.getBounds(), {
+                maxZoom: 19,
+                padding: [40, 40]
+            });
+
+            // optional: buka popup
+            if (layer.getPopup()) {
+                layer.openPopup();
             }
         }
     });
