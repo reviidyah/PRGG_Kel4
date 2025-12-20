@@ -55,11 +55,11 @@
         <script src="js/leaflet-measure.js"></script>
         <script src="js/leaflet-search.js"></script>
         <script src="data/BatasKelurahan_3.js"></script>
-        <script src="data/JalanKemantrenGondokusuman_4.js"></script>
+        <script src="data/Jalan_4.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[-7.7943387063773555,110.35492273986168],[-7.767331350774742,110.40055119250914]]);
+        }).fitBounds([[-7.785700723241222,110.3732886975192],[-7.777820694498133,110.38319201010486]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -233,31 +233,43 @@
         });
         bounds_group.addLayer(layer_BatasKelurahan_3);
         map.addLayer(layer_BatasKelurahan_3);
-        function pop_JalanKemantrenGondokusuman_4(feature, layer) {
+        function pop_Jalan_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">nama</th>\
+                        <th scope="row">Nama</th>\
                         <td>' + (feature.properties['nama'] !== null ? autolinker.link(String(feature.properties['nama']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">keadaan</th>\
-                        <td>' + (feature.properties['keadaan'] !== null ? autolinker.link(String(feature.properties['keadaan']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">material</th>\
-                        <td>' + (feature.properties['material'] !== null ? autolinker.link(String(feature.properties['material']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">kelurahan</th>\
-                        <td>' + (feature.properties['kelurahan'] !== null ? autolinker.link(String(feature.properties['kelurahan']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">rw</th>\
+                        <th scope="row">RW</th>\
                         <td>' + (feature.properties['rw'] !== null ? autolinker.link(String(feature.properties['rw']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">lebar</th>\
-                        <td>' + (feature.properties['lebar'] !== null ? autolinker.link(String(feature.properties['lebar']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">Kelurahan</th>\
+                        <td>' + (feature.properties['kelurahan'] !== null ? autolinker.link(String(feature.properties['kelurahan']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Kemantren</th>\
+                        <td>Gondokusuman</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Keadaan</th>\
+                        <td>' + (feature.properties['keadaan'] !== null ? autolinker.link(String(feature.properties['keadaan']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Material</th>\
+                        <td>' + (feature.properties['material'] !== null ? autolinker.link(String(feature.properties['material']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Lebar</th>\
+                        <td>' + (feature.properties['lebar'] !== null ? autolinker.link(String(feature.properties['lebar']).replace(/'/g, '\'').toLocaleString()) : '') + ' meter</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Panjang</th>\
+                        <td>' + (feature.properties['panjang'] !== null ? autolinker.link(String(feature.properties['panjang']).replace(/'/g, '\'').toLocaleString()) : '') + ' meter</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Dokumentasi</th>\
+                        <td>' + (feature.properties['dokum'] !== null ? autolinker.link(String(feature.properties['dokum']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -267,48 +279,35 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_JalanKemantrenGondokusuman_4_0() {
+        function style_Jalan_4_0() {
             return {
-                pane: 'pane_JalanKemantrenGondokusuman_4',
+                pane: 'pane_Jalan_4',
                 opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
+                color: 'rgba(220,16,16,1.0)',
                 dashArray: '',
                 lineCap: 'square',
                 lineJoin: 'bevel',
-                weight: 4.0,
+                weight: 3.0,
                 fillOpacity: 0,
                 interactive: true,
             }
         }
-        function style_JalanKemantrenGondokusuman_4_1() {
-            return {
-                pane: 'pane_JalanKemantrenGondokusuman_4',
-                opacity: 1,
-                color: 'rgba(255,127,0,1.0)',
-                dashArray: '',
-                lineCap: 'square',
-                lineJoin: 'bevel',
-                weight: 2.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-        }
-        map.createPane('pane_JalanKemantrenGondokusuman_4');
-        map.getPane('pane_JalanKemantrenGondokusuman_4').style.zIndex = 404;
-        map.getPane('pane_JalanKemantrenGondokusuman_4').style['mix-blend-mode'] = 'normal';
-        var layer_JalanKemantrenGondokusuman_4 = new L.geoJson.multiStyle(json_JalanKemantrenGondokusuman_4, {
+        map.createPane('pane_Jalan_4');
+        map.getPane('pane_Jalan_4').style.zIndex = 404;
+        map.getPane('pane_Jalan_4').style['mix-blend-mode'] = 'normal';
+        var layer_Jalan_4 = new L.geoJson(json_Jalan_4, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_JalanKemantrenGondokusuman_4',
-            layerName: 'layer_JalanKemantrenGondokusuman_4',
-            pane: 'pane_JalanKemantrenGondokusuman_4',
-            onEachFeature: pop_JalanKemantrenGondokusuman_4,
-            styles: [style_JalanKemantrenGondokusuman_4_0,style_JalanKemantrenGondokusuman_4_1,]
+            dataVar: 'json_Jalan_4',
+            layerName: 'layer_Jalan_4',
+            pane: 'pane_Jalan_4',
+            onEachFeature: pop_Jalan_4,
+            style: style_Jalan_4_0,
         });
-        bounds_group.addLayer(layer_JalanKemantrenGondokusuman_4);
-        map.addLayer(layer_JalanKemantrenGondokusuman_4);
+        bounds_group.addLayer(layer_Jalan_4);
+        map.addLayer(layer_Jalan_4);
         var overlaysTree = [
-            {label: '<img src="legend/JalanKemantrenGondokusuman_4.png" /> Jalan Kemantren Gondokusuman', layer: layer_JalanKemantrenGondokusuman_4},
+            {label: '<img src="legend/Jalan_4.png" /> Jalan ', layer: layer_Jalan_4},
             {label: '<img src="legend/BatasKelurahan_3.png" /> Batas Kelurahan', layer: layer_BatasKelurahan_3},
             {label: "Google Satellite", layer: layer_GoogleSatellite_2, radioGroup: 'bm' },
             {label: "Google Road", layer: layer_GoogleRoad_1, radioGroup: 'bm' },
@@ -320,12 +319,75 @@
             //openedSymbol: '&#8863; &#x1f5c1;',
             //collapseAll: 'Collapse all',
             //expandAll: 'Expand all',
-            collapsed: true,
+            collapsed: false, 
         });
         lay.addTo(map);
+		document.addEventListener("DOMContentLoaded", function() {
+            // set new Layers List height which considers toggle icon
+            function newLayersListHeight() {
+                var layerScrollbarElement = document.querySelector('.leaflet-control-layers-scrollbar');
+                if (layerScrollbarElement) {
+                    var layersListElement = document.querySelector('.leaflet-control-layers-list');
+                    var originalHeight = layersListElement.style.height 
+                        || window.getComputedStyle(layersListElement).height;
+                    var newHeight = parseFloat(originalHeight) - 50;
+                    layersListElement.style.height = newHeight + 'px';
+                }
+            }
+            var isLayersListExpanded = true;
+            var controlLayersElement = document.querySelector('.leaflet-control-layers');
+            var toggleLayerControl = document.querySelector('.leaflet-control-layers-toggle');
+            // toggle Collapsed/Expanded and apply new Layers List height
+            toggleLayerControl.addEventListener('click', function() {
+                if (isLayersListExpanded) {
+                    controlLayersElement.classList.remove('leaflet-control-layers-expanded');
+                } else {
+                    controlLayersElement.classList.add('leaflet-control-layers-expanded');
+                }
+                isLayersListExpanded = !isLayersListExpanded;
+                newLayersListHeight()
+            });	
+			// apply new Layers List height if toggle layerstree
+			if (controlLayersElement) {
+				controlLayersElement.addEventListener('click', function(event) {
+					var toggleLayerHeaderPointer = event.target.closest('.leaflet-layerstree-header-pointer span');
+					if (toggleLayerHeaderPointer) {
+						newLayersListHeight();
+					}
+				});
+			}
+            // Collapsed/Expanded at Start to apply new height
+            setTimeout(function() {
+                toggleLayerControl.click();
+            }, 10);
+            setTimeout(function() {
+                toggleLayerControl.click();
+            }, 10);
+            // Collapsed touch/small screen
+            var isSmallScreen = window.innerWidth < 650;
+            if (isSmallScreen) {
+                setTimeout(function() {
+                    controlLayersElement.classList.remove('leaflet-control-layers-expanded');
+                    isLayersListExpanded = !isLayersListExpanded;
+                }, 500);
+            }  
+        });       
         setBounds();
+        var i = 0;
+        layer_Jalan_4.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['nama'] !== null?String('<div style="color: #ff7f00; font-size: 9pt; font-weight: bold; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['nama']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Jalan_4'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
         map.addControl(new L.Control.Search({
-            layer: layer_JalanKemantrenGondokusuman_4,
+            layer: layer_Jalan_4,
             initial: false,
             hideMarkerOnCollapse: true,
             propertyName: 'nama'}));
@@ -334,7 +396,17 @@
         } else {
             document.getElementsByClassName('search-button')[1].className += ' fa fa-binoculars';
         }
-        </script>
+        resetLabels([layer_Jalan_4]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Jalan_4]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Jalan_4]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Jalan_4]);
+        });
+        </script> 
         <script src="./js/listener.js"></script>          
     </body>
 </html>

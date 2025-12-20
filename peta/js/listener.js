@@ -22,7 +22,7 @@ window.addEventListener("message", function (event) {
     // 1. SIMPAN STYLE ASLI (SEKALI)
     // =============================
     if (!originalStylesSaved) {
-        layer_JalanKemantrenGondokusuman_4.eachLayer(function (layer) {
+        layer_Jalan_4.eachLayer(function (layer) {
             originalStyles.set(layer._leaflet_id, {
                 color: layer.options.color,
                 weight: layer.options.weight,
@@ -36,7 +36,7 @@ window.addEventListener("message", function (event) {
     // =============================
     // 2. RESET SEMUA JALAN
     // =============================
-    layer_JalanKemantrenGondokusuman_4.eachLayer(function (layer) {
+    layer_Jalan_4.eachLayer(function (layer) {
         let saved = originalStyles.get(layer._leaflet_id);
         if (saved) {
             layer.setStyle(saved);
@@ -48,7 +48,7 @@ window.addEventListener("message", function (event) {
     // =============================
     let sudahKetemu = false;
 
-    layer_JalanKemantrenGondokusuman_4.eachLayer(function (layer) {
+    layer_Jalan_4.eachLayer(function (layer) {
 
         if (sudahKetemu) return;
         if (!layer.feature || !layer.feature.properties) return;

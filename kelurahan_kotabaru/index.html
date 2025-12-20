@@ -45,6 +45,32 @@
             background: #111;
             color: #ccc;
         }
+        .peta-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .btn-download-mini {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #000;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            text-align: center;
+            line-height: 36px;
+            font-size: 16px;
+            text-decoration: none;
+            opacity: 0.85;
+        }
+
+        .btn-download-mini:hover {
+            opacity: 1;
+            background: #222;
+        }
+
     </style>
 </head>
 
@@ -63,16 +89,26 @@
     <!-- ================= PETA LAYOUT ================= -->
     <h2 class="section-title text-center mt-4 mb-4">Peta Jalan Kotabaru</h2>
 
-    <div class="d-flex flex-column align-items-center gap-4 mb-4">
-        <img src="gambar/peta.jpg" class="img-fluid rounded shadow border border-dark" alt="Peta Baciro">
+    <div class="peta-wrapper mb-4">
+        <img src="gambar/peta.jpg"
+            class="img-fluid rounded shadow border border-dark"
+            alt="Peta Jalan Kelurahan Baciro">
+
+        <a href="gambar/peta.jpg"
+        download
+        class="btn-download-mini"
+        title="Download Peta Jalan Baciro">
+            ⬇
+        </a>
     </div>
+
 
     <!-- ================= RINGKASAN DATA ================= -->
     <h2 class="section-title">Ringkasan Data</h2>
 
     <ul style="font-size: 1.1rem;">
-        <li>Jumlah jalan: 35</li>
-        <li>Jumlah gang: 9</li>
+        <li>Jumlah jalan: 34</li>
+        <li>Jumlah gang: 10</li>
     </ul>
 
     <!-- ================= DOKUMENTASI ================= -->
@@ -88,7 +124,7 @@
 
     <!-- ================= LINK PETA WEBGIS ================= -->
     <div class="text-center mt-5">
-        <a href="../peta/index.html" class="btn btn-primary btn-lg px-4 py-2">
+        <a href="../peta/index.html" class="btn btn-dark btn-lg px-4 py-2">
             Lihat Peta Interaktif
         </a>
     </div>
